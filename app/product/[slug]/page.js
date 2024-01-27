@@ -1,4 +1,5 @@
 import AddToCart from "@/app/components/AddToCart";
+import Checkout from "@/app/components/Checkout";
 import ImageGallery from "@/app/components/ImageGallery";
 import { client } from "@/app/lib/sanity";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,8 @@ async function getData(slug) {
   const data = await client.fetch(query);
   return data;
 }
+
+export const dynamic = "force-dynamic";
 
 export default async function ProductPage({ params }) {
   const data = await getData(params.slug);
@@ -64,7 +67,15 @@ export default async function ProductPage({ params }) {
                   price_id={data.price_id}
                   key={data._id}
                 />
-                <Button variant={"secondary"}>Checkout</Button>
+                <Checkout
+                  currency="USD"
+                  description={data.description}
+                  image={data.images[0]}
+                  name={data.name}
+                  price={data.price}
+                  price_id={data.price_id}
+                  key={data._id}
+                />
               </div>
               <p className="mt-12 text-base text-black tracking-wider">
                 {data.description}

@@ -7,9 +7,9 @@ export default function CartProvider({ children }) {
       mode="payment"
       cartMode="client-only"
       stripe={process.env.NEXT_PUBLIC_STRIPE_KEY}
-      successUrl="http://localhost:3000/stripe/success"
-      cancelUrl="http://localhost:3000/stripe/error"
-      currency="INR"
+      successUrl="https://e-commerce-next-js-eosin.vercel.app/stripe/success"
+      cancelUrl="https://e-commerce-next-js-eosin.vercel.app/stripe/error"
+      currency="USD"
       billingAddressCollection={false}
       shouldPersist={true}
       language="en-US"
